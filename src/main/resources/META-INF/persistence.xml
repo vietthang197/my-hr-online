@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="defaultUnit">
+    	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    	<jta-data-source>PostgresDs</jta-data-source>
+		<properties>
+			<property name="hibernate.delay_cdi_access" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
+            <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
+            <property name="hibernate.format_sql" value="true" /> <!-- Show SQL formatted -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+            <property name="hibernate.jdbc.batch_size" value="50000"/>
+            <property name="hibernate.jdbc.fetch_size" value="1000"/>
+            <property name="hibernate.session.events.log.LOG_QUERIES_SLOWER_THAN_MS" value="1"/>
+            <property name="hibernate.search.backend.analysis.configurer" value="class:com.thanglv.hronline.config.MyAnalysisConfigurer"/>
+            <property name="hibernate.search.backend.directory.type" value="local-filesystem"/>
+            <property name="hibernate.search.backend.directory.root" value="D:/apache_lucene/hronline-v2"/>
+            <property name="hibernate.search.backend.lucene_version" value="8.11.2"/>
+		</properties>
+    </persistence-unit>
+</persistence>
