@@ -1,5 +1,7 @@
 package com.thanglv.hronline;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.search.mapper.orm.Search;
 import org.hibernate.search.mapper.orm.massindexing.MassIndexer;
 import org.hibernate.search.mapper.orm.session.SearchSession;
@@ -13,12 +15,15 @@ import jakarta.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class App {
+
+	private Logger logger = LogManager.getLogger();
 	
 	@PersistenceContext(unitName = "defaultUnit")
 	private EntityManager entityManager;
 
 	@PostConstruct
 	public void initIndex() {
+		logger.info("DJT CON ME CHUNG MAY LUON");
 		SearchSession searchSession = Search.session( entityManager );
 
         MassIndexer indexer = searchSession.massIndexer( CorpIndustry.class )

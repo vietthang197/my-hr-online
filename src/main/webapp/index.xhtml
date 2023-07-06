@@ -7,26 +7,13 @@
 </h:head>
 
 <h:body>
+
 	<div class="card">
+		<h5>Ajax Disabling and Status Icon</h5>
 		<h:form>
-			<p:growl id="messages" showDetail="true" />
-
-			<h5 class="mt-0">Basic</h5>
-			<p:rating value="#{ratingView.rating1}" />
-
-			<h5>Remote</h5>
-			<p:rating value="#{ratingView.rating2}">
-				<p:ajax event="rate" listener="#{ratingView.onrate}"
-					update="messages" />
-				<p:ajax event="cancel" listener="#{ratingView.oncancel}"
-					update="messages" />
-			</p:rating>
-
-			<h5>Readonly</h5>
-			<p:rating value="#{ratingView.rating3}" readonly="true" />
-
-			<h5>Disabled</h5>
-			<p:rating value="#{ratingView.rating3}" disabled="true" />
+			<p:growl id="growl" showDetail="true" />
+			<p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+			<p:commandButton value="Keep Enabled" disableOnAjax="true" action="#{commandButtonView.action()}" update="growl"/>
 		</h:form>
 	</div>
 </h:body>
